@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Админ БСБ</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+
+		<form th:action="@{/logout}" method="get">
+			<button class="btn btn-md btn-danger btn-block" name="registration"
+				type="Submit">Выйти</button>
+		</form>
+
+		<div class="panel-group" style="margin-top: 40px">
+			<div class="panel-heading">
+				<span th:utext="${userName}"></span>
+			</div>
+		</div>
+		<table class="table table-striped">
+			<tr>
+				<th width="10">ID</th>
+				<th width="20">Доступ</th>
+				<th width="120">Имя</th>
+				<th width="120">Фамилия</th>
+				<th width="120">Email</th>
+				<th width="60">Изменить</th>
+				<th width="60">Удалить</th>
+			</tr>
+			<tr th:each="user : ${allUsers}">
+				<td><a th:text="${user.id}" th:href="@{'/user/' + ${user.id}}"></a></td>
+				<div th:switch="${user.active}">
+				<td th:case="1">Админ</td>
+				<td th:case="2">Пользователь</td>
+				</div>
+				<td th:text="${user.name}"></td>
+				<td th:text="${user.lastName}"></td>
+				<td th:text="${user.email}"></td>
+				<td><a th:href="@{'/admin/edit/' + ${user.id}}">Изменить</a></td>
+				<td><a th:href="@{'/admin/remove/' + ${user.id}}">Удалить</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
