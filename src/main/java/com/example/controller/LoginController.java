@@ -67,6 +67,8 @@ public class LoginController {
 		modelAndView.setViewName("/admin/edit");
 		return modelAndView;
 	}
+	
+	
 
 	@RequestMapping(value = "/admin/edit", method = RequestMethod.POST)
 	public ModelAndView editUser(@Valid User user, BindingResult bindingResult) {
@@ -75,7 +77,6 @@ public class LoginController {
 			modelAndView.setViewName("redirect:/admin/home");
 		} else {
 			userService.saveUser(user);
-			modelAndView.addObject("successMessage", "Пользователь успешно изменён");
 			modelAndView.addObject("user", user);
 			modelAndView.setViewName("redirect:/admin/home");
 
@@ -90,8 +91,9 @@ public class LoginController {
 		User user = userService.findUserByEmail(auth.getName());
 		List<User> allUsers = userService.findAll();
 		modelAndView.addObject("userName",
-				"Выполнен вход как админ: " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+				"Выполнен вход как админ: " + user.getName() + " " + user.getSurname() + " (" + user.getEmail() + ")");
 		modelAndView.addObject("allUsers", allUsers);
+		modelAndView.addObject("successMessage", "Пользователь успешно изменён");
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
@@ -102,5 +104,20 @@ public class LoginController {
 		userService.deleteUser(user);
 		return "redirect:/admin/home";
 	}
+	
+	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+	public ModelAndView info(@PathVariable Long id) {
+		ModelAndView modelAndView = new ModelAndView();
+		User user = userService.findUserById(id);
+		modelAndView.addObject("user", user);
+		modelAndView.setViewName("/user");
+		return modelAndView;
+	}
 
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public String userRedirect() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		return "redirect:/user/" + user.getId();
+	}
 }

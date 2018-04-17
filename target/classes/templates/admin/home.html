@@ -23,7 +23,8 @@
 
 		<div class="panel-group" style="margin-top: 40px">
 			<div class="panel-heading">
-				<span th:utext="${userName}"></span>
+				<span class="alert alert-info" th:utext="${userName}"></span>
+				<!-- <span class="alert alert-success" th:utext="${successMessage}"></span> -->
 			</div>
 		</div>
 		<table class="table table-striped">
@@ -43,7 +44,7 @@
 				<td th:case="2">Пользователь</td>
 				</div>
 				<td th:text="${user.name}"></td>
-				<td th:text="${user.lastName}"></td>
+				<td th:text="${user.surname}"></td>
 				<td th:text="${user.email}"></td>
 				<td><a th:href="@{'/admin/edit/' + ${user.id}}">Изменить</a></td>
 				<td><a th:href="@{'/admin/remove/' + ${user.id}}">Удалить</a></td>
