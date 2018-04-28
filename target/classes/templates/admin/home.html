@@ -20,11 +20,26 @@
 			<button class="btn btn-md btn-danger btn-block" name="registration"
 				type="Submit">Выйти</button>
 		</form>
-
-		<div class="panel-group" style="margin-top: 40px">
+		<div class="panel-group" style="margin-top: 20px">
 			<div class="panel-heading">
-				<span class="alert alert-info" th:utext="${userName}"></span>
-				<!-- <span class="alert alert-success" th:utext="${successMessage}"></span> -->
+				<span class="alert alert-info" th:utext="${userName}" role="alert"></span>
+			</div>
+		</div>
+		<div th:if="${successMessage} != null">
+			<div class="panel-group" style="margin-top: 20px">
+				<div class="panel-heading">
+					<span class="alert alert-success"
+						th:utext="${successMessage}" role="alert"></span>
+				</div>
+			</div>
+		</div>
+
+		<div th:if="${failureMessage} != null">
+			<div class="panel-group" style="margin-top: 20px">
+				<div class="panel-heading">
+					<span class="alert alert-danger" th:utext="${failureMessage}"
+						role="alert"></span>
+				</div>
 			</div>
 		</div>
 		<table class="table table-striped">
@@ -40,14 +55,16 @@
 			<tr th:each="user : ${allUsers}">
 				<td><a th:text="${user.id}" th:href="@{'/user/' + ${user.id}}"></a></td>
 				<div th:switch="${user.active}">
-				<td th:case="1">Админ</td>
-				<td th:case="2">Пользователь</td>
+					<td th:case="1">Админ</td>
+					<td th:case="2">Пользователь</td>
 				</div>
 				<td th:text="${user.name}"></td>
 				<td th:text="${user.surname}"></td>
 				<td th:text="${user.email}"></td>
-				<td><a th:href="@{'/admin/edit/' + ${user.id}}">Изменить</a></td>
-				<td><a th:href="@{'/admin/remove/' + ${user.id}}">Удалить</a></td>
+				<td><a th:if="${user.active} == 2"
+					th:href="@{'/admin/edit/' + ${user.id}}">Изменить</a></td>
+				<td><a th:if="${user.active} == 2"
+					th:href="@{'/admin/remove/' + ${user.id}}">Удалить</a></td>
 			</tr>
 		</table>
 	</div>

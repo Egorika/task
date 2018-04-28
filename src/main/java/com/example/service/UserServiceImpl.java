@@ -23,9 +23,14 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	@Override
+    @Override
 	public User findUserByEmail(String email) {
 		return userRepository.findByEmail(email);
+	}
+
+    @Override
+	public User findUserByEmail(String email, Long id) {
+		return userRepository.findByEmail(email, id);
 	}
 	
 	@Override
@@ -33,6 +38,16 @@ public class UserServiceImpl implements UserService{
 		return userRepository.findOne(id);
 	}
 
+	@Override
+	public User findUserByPassportId(String passportid) {
+		return userRepository.findByPassportId(passportid);
+	}
+	
+	@Override
+	public User findUserByPassportId(String passportid, Long id) {
+		return userRepository.findByPassportId(passportid, id);
+	}
+	
 	@Override
 	public List<User> findAll() {
 		return userRepository.findAll();
