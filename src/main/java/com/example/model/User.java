@@ -1,10 +1,13 @@
 package com.example.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -113,32 +116,18 @@ public class User {
 	@Column(name = "military")
 	private String military;
 
+
 	@Column(name = "active")
 	private int active;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JoinTable(
+			name = "user_role", 
+			joinColumns = @JoinColumn(name = "user_id"), 
+			inverseJoinColumns = @JoinColumn(name = "role_id")
+			)
 	private Set<Role> roles;
 
-	public enum Choice {
-		Да, Нет
-	}
-
-	public enum Nationality {
-		Резидент, Нерезидент
-	}
-
-	public enum Disability {
-		Первая, Вторая, Третья, Нет
-	}
-
-	public enum Gender {
-		Мужчина, Женщина
-	}
-
-	public enum City {
-		Минск, Гомель, Могилёв, Гродно, Витебск, Брест
-	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -378,5 +367,5 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-
 }
+

@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.model.Role;
 import com.example.model.User;
 import com.example.service.UserService;
 
@@ -129,16 +130,19 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		User user = userService.findUserById(id);
 		modelAndView.addObject("user", user);
+		modelAndView.addObject("date", new Date());
 		modelAndView.setViewName("/user");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String userRedirect() {
+	public ModelAndView userRedirect() {
+		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
 		if (user.getActive() == 1)
-			return "redirect:/admin/home";
-		return "redirect:/user/" + user.getId();
+			modelAndView.setViewName("redirect:/admin/home");
+		modelAndView.setViewName("redirect:/user/" + user.getId());
+		return modelAndView;
 	}
 }

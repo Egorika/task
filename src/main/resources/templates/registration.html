@@ -10,11 +10,118 @@
 	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
 	crossorigin="anonymous">
 <title>Регистрация</title>
+
+<style>
+.header {
+	width: 100%;
+	height: 70px;
+	background: #ed7f2d;
+	padding: 5px 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.header img {
+	height: 100%;
+}
+
+.header form {
+	padding: 10px;
+	width: 240px;
+}
+
+.header button {
+	height: 40px;
+	border: 2px solid white;
+	background: #ed7f2d;
+	outline: none;
+	font-weight: bold;
+	color: white;
+}
+
+.header button:hover {
+	background: #d76613;
+	color: white;
+	border: 2px solid white;
+}
+
+body {
+	color: #FF8800;
+	background: #fdeeec !important;
+}
+
+.sml_lg {
+	display: none;
+}
+
+.h2_pad {
+	padding: 15px 0px;
+	text-align: center;
+}
+
+#text {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.btn_form {
+	margin: 0px auto;
+	padding-bottom: 25px;
+	width: 60%;
+}
+
+.btn_form button {
+	height: 40px;
+	border: 2px solid white;
+	background: #f09a59;
+	outline: none;
+	font-weight: bold;
+	color: white;
+}
+
+.btn_form button:hover {
+	background: #cf8146;
+	color: white;
+	border: 2px solid white;
+}
+
+@media ( max-width : 800px) {
+	.big_lg {
+		display: none;
+	}
+	.sml_lg {
+		display: block;
+	}
+	.header {
+		padding: 0px 20px;
+	}
+	.header form {
+		/* padding: 14px; */
+		width: 240px;
+	}
+}
+
+@media ( max-width : 520px) {
+	.container {
+		width: 100%;
+	}
+}
+</style>
 </head>
 <body>
-	<form th:action="@{/}" method="get">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">Войти</button>
-	</form>
+	<div class="header">
+		<div class="big_lg">
+			<img th:src="@{/images/f-logo.svg}">
+		</div>
+		<div class="sml_lg">
+			<img th:src="@{/images/logo_s.png}">
+		</div>
+		<form th:action="@{/}" method="get">
+			<button class="btn btn-md btn-warning btn-block" type="Submit">Войти</button>
+		</form>
+	</div>
+
 
 	<div class="form">
 		<div class="container">
@@ -34,40 +141,48 @@
 						</div>
 						<h2 class="h2_pad">Регистрация</h2>
 						<div class="form-group">
-							<label for="inputEmail" class="control-label">Email</label> <input
-								type="email" th:field="*{email}" class="form-control"
+							<label for="inputEmail" class="control-label" id="text">Email<a
+								class="text-danger">*</a>
+							</label> <input type="email" th:field="*{email}" class="form-control"
 								id="inputEmail" placeholder="Ввод"
 								data-error="Bruh, that email address is invalid">
 							<div class="help-block with-errors"></div>
 						</div>
 						<div class="form-group">
-							<label for="inputPassword" class="control-label">Пароль</label> <input
-								type="password" th:field="*{password}" class="form-control"
-								id="inputPassword" placeholder="Ввод" required>
-						</div>
-						<div class="form-group">
-							<label for="inputSurname" class="control-label">Фамилия</label> <input
-								type="text" th:field="*{surname}" class="form-control"
-								id="inputSurname" placeholder="Ввод" required>
-						</div>
-						<div class="form-group">
-							<label for="inputName" class="control-label">Имя</label> <input
-								type="text" th:field="*{name}" class="form-control"
-								id="inputName" placeholder="Ввод" required>
-						</div>
-						<div class="form-group">
-							<label for="inputPatronymiс" class="control-label">Отчество</label>
-							<input type="text" th:field="*{lastname}" class="form-control"
-								id="inputPatronymiс" placeholder="Ввод" required>
-						</div>
-						<div class="form-group">
-							<label for="inputdateOfBD" class="control-label">Дата
-								Рождения</label> <input type="date" th:field="*{birthday}"
-								class="form-control" id="inputdateOfBD" placeholder="Ввод"
+							<label for="inputPassword" class="control-label" id="text">Пароль<a
+								class="text-danger">*</a>
+							</label> <input type="password" th:field="*{password}"
+								class="form-control" id="inputPassword" placeholder="Ввод"
 								required>
 						</div>
 						<div class="form-group">
-							<label for="inputSex" class="control-label">Пол</label>
+							<label for="inputSurname" class="control-label" id="text">Фамилия<a
+								class="text-danger">*</a>
+							</label> <input type="text" th:field="*{surname}" class="form-control"
+								id="inputSurname" placeholder="Ввод" required>
+						</div>
+						<div class="form-group">
+							<label for="inputName" class="control-label" id="text">Имя<a
+								class="text-danger">*</a>
+							</label> <input type="text" th:field="*{name}" class="form-control"
+								id="inputName" placeholder="Ввод" required>
+						</div>
+						<div class="form-group">
+							<label for="inputPatronymiс" class="control-label" id="text">Отчество<a
+								class="text-danger">*</a>
+							</label> <input type="text" th:field="*{lastname}" class="form-control"
+								id="inputPatronymiс" placeholder="Ввод" required>
+						</div>
+						<div class="form-group">
+							<label for="inputdateOfBD" class="control-label" id="text">Дата
+								Рождения<a class="text-danger">*</a>
+							</label> <input type="date" th:field="*{birthday}" class="form-control"
+								id="inputdateOfBD" placeholder="Ввод" required>
+						</div>
+						<div class="form-group">
+							<label for="inputSex" class="control-label" id="text">Пол<a
+								class="text-danger">*</a>
+							</label>
 							<div class="radio">
 								<label> <input th:field="*{gender}" th:value="Мужчина"
 									type="radio" name="sex" required> Мужчина
@@ -80,116 +195,126 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputIdLetter" class="control-label">Серия
-								паспорта</label> <input type="text" th:field="*{passportseries}"
+							<label for="inputIdLetter" class="control-label" id="text">Серия
+								паспорта<a class="text-danger">*</a>
+							</label> <input type="text" th:field="*{passportseries}"
 								class="form-control" id="inputIdLetter" placeholder="Ввод"
 								data-format="DD" maxlength="2" required>
 						</div>
 						<div class="form-group">
-							<label for="inputNumber" class="control-label">Номер
-								паспорта</label> <input type="text" th:field="*{passportnumber}"
+							<label for="inputNumber" class="control-label" id="text">Номер
+								паспорта<a class="text-danger">*</a>
+							</label> <input type="text" th:field="*{passportnumber}"
 								class="form-control" id="inputNumber" placeholder="Ввод"
 								required>
 						</div>
 						<div class="form-group">
-							<label for="inputIssuance" class="control-label">Кем
-								выдан паспорт</label> <input type="text" th:field="*{passportissue}"
+							<label for="inputIssuance" class="control-label" id="text">Кем
+								выдан паспорт<a class="text-danger">*</a>
+							</label> <input type="text" th:field="*{passportissue}"
 								class="form-control" id="inputIssuance" placeholder="Ввод"
 								required>
 						</div>
 						<div class="form-group">
-							<label for="inputdateOfIssuance" class="control-label">Дата
-								выдачи паспорта</label> <input type="date" th:field="*{passportdate}"
+							<label for="inputdateOfIssuance" class="control-label" id="text">Дата
+								выдачи паспорта<a class="text-danger">*</a>
+							</label> <input type="date" th:field="*{passportdate}"
 								class="form-control" id="inputdateOfIssuance" placeholder="Ввод"
 								required>
 						</div>
 						<div class="form-group">
-							<label for="inputIdNumber" class="control-label">Идентификационный
-								номер</label> <input type="text" th:field="*{passportid}"
-								class="form-control" id="inputIdNumber" placeholder="Ввод"
-								maxlength="14" required>
+							<label for="inputIdNumber" class="control-label" id="text">Идентификационный
+								номер<a class="text-danger">*</a>
+							</label> <input type="text" th:field="*{passportid}" class="form-control"
+								id="inputIdNumber" placeholder="Ввод" maxlength="14" required>
 						</div>
 						<div class="form-group">
-							<label for="inputPlaceOfBorn" class="control-label">Место
-								рождения</label> <input type="text" th:field="*{birthplace}"
-								class="form-control" id="inputPlaceOfBorn" placeholder="Ввод"
-								required>
+							<label for="inputPlaceOfBorn" class="control-label" id="text">Место
+								рождения<a class="text-danger">*</a>
+							</label> <input type="text" th:field="*{birthplace}" class="form-control"
+								id="inputPlaceOfBorn" placeholder="Ввод" required>
 						</div>
 						<div class="form-group">
-							<label for="inputPlaceOfLiving">Город прописки</label> <select
-								th:field="*{city}" class="form-control" id="inputPlaceOfLiving"
-								required>
+							<label for="inputPlaceOfLiving" id="text">Город прописки<a
+								class="text-danger">*</a>
+							</label> <select th:field="*{city}" class="form-control"
+								id="inputPlaceOfLiving" required>
+								<option th:value="Минск">Минск</option>
 								<option th:value="Брест">Брест</option>
 								<option th:value="Витебск">Витебск</option>
 								<option th:value="Гомель">Гомель</option>
 								<option th:value="Гродно">Гродно</option>
-								<option th:value="Минск">Минск</option>
 								<option th:value="Могилёв">Могилёв</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="inputLivingEddress" class="control-label">Адрес
-								фактического проживания</label> <input type="text" th:field="*{adress}"
-								class="form-control" id="inputLivingEddress" placeholder="Ввод"
-								required>
+							<label for="inputLivingEddress" class="control-label" id="text">Адрес
+								фактического проживания<a class="text-danger">*</a>
+							</label> <input type="text" th:field="*{adress}" class="form-control"
+								id="inputLivingEddress" placeholder="Ввод" required>
 						</div>
 						<div class="form-group">
-							<label for="HomePhone" class="control-label">Домашний
+							<label for="HomePhone" class="control-label" id="text">Домашний
 								телефон</label> <input type="text" th:field="*{phonehome}"
 								class="form-control" id="inputHomePhone" placeholder="Ввод">
 						</div>
 						<div class="form-group">
-							<label for="MobPhone" class="control-label">Мобильный
+							<label for="MobPhone" class="control-label" id="text">Мобильный
 								телефон</label> <input type="text" th:field="*{phonemobile}"
 								class="form-control" id="inputMobPhone" placeholder="Ввод">
 						</div>
 						<div class="form-group">
-							<label for="inputJob" class="control-label">Место работы</label>
-							<input type="text" th:field="*{job}" class="form-control"
+							<label for="inputJob" class="control-label" id="text">Место
+								работы</label> <input type="text" th:field="*{job}" class="form-control"
 								id="inputJob" placeholder="Ввод">
 						</div>
 						<div class="form-group">
-							<label for="inputJobPosition" class="control-label">Должность</label>
+							<label for="inputJobPosition" class="control-label" id="text">Должность</label>
 							<input type="text" th:field="*{jobposition}" class="form-control"
 								id="inputJobPosition" placeholder="Ввод">
 						</div>
 						<div class="form-group">
-							<label for="inputCity">Город прописки</label> <select
-								th:field="*{residencecity}" class="form-control" id="inputCity"
-								required>
+							<label for="inputCity" id="text">Город прописки<a
+								class="text-danger">*</a>
+							</label> <select th:field="*{residencecity}" class="form-control"
+								id="inputCity" required>
+								<option th:value="Минск">Минск</option>
 								<option th:value="Брест">Брест</option>
 								<option th:value="Витебск">Витебск</option>
 								<option th:value="Гомель">Гомель</option>
 								<option th:value="Гродно">Гродно</option>
-								<option th:value="Минск">Минск</option>
 								<option th:value="Могилёв">Могилёв</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="inputEddress" class="control-label">Адрес
-								прописки</label> <input type="text" th:field="*{residenceadress}"
+							<label for="inputEddress" class="control-label" id="text">Адрес
+								прописки<a class="text-danger">*</a>
+							</label> <input type="text" th:field="*{residenceadress}"
 								class="form-control" id="inputEddress" placeholder="Ввод"
 								required>
 						</div>
 						<div class="form-group">
-							<label for="inputFamilyPosition">Семейное положение</label> <select
-								th:field="*{status}" class="form-control"
+							<label for="inputFamilyPosition" id="text">Семейное
+								положение<a class="text-danger">*</a>
+							</label> <select th:field="*{status}" class="form-control"
 								id="inputFamilyPosition" required>
 								<option th:value="Да">Замужем/Женат</option>
 								<option th:value="Нет">Не замужен/Не женат</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="inputNationality">Национальность</label> <select
-								th:field="*{nationality}" class="form-control"
+							<label for="inputNationality" id="text">Национальность<a
+								class="text-danger">*</a>
+							</label> <select th:field="*{nationality}" class="form-control"
 								id="inputNationality" required>
 								<option th:value="Резидент">Резидент</option>
 								<option th:value="Нерезидент">Не резидент</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="inputDisability">Инвалидность</label> <select
-								th:field="*{disability}" class="form-control"
+							<label for="inputDisability" id="text">Инвалидность<a
+								class="text-danger">*</a>
+							</label> <select th:field="*{disability}" class="form-control"
 								id="inputDisability" required>
 								<option th:value="Нет">Нет</option>
 								<option th:value="Первая">1 группа инвалидности</option>
@@ -198,7 +323,9 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="inputPensioner" class="control-label">Пенсионер</label>
+							<label for="inputPensioner" class="control-label" id="text">Пенсионер<a
+								class="text-danger">*</a>
+							</label>
 							<div class="radio">
 								<label> <input th:field="*{pensioner}" th:value="Да"
 									type="radio" name="pasioner" required> Да
@@ -211,14 +338,14 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputEddress" class="control-label">Ежемесячный
+							<label for="inputEddress" class="control-label" id="text">Ежемесячный
 								доход</label> <input type="number" th:field="*{income}"
 								class="form-control" id="inputEddress" placeholder="Ввод"
 								min="0" step="0.01" data-number-to-fixed="2"
 								data-number-stepfactor="100">
 						</div>
 						<div class="form-group">
-							<label for="inputSaving" class="control-label">Военнообязанный</label>
+							<label for="inputSaving" class="control-label" id="text">Военнообязанный</label>
 							<div class="radio">
 								<label> <input th:field="*{military}" th:value="Да"
 									type="radio" name="saving" required> Да
@@ -231,8 +358,8 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-sm-9">
-								<button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+							<div class="btn_form">
+								<button type="submit" class="btn btn-block">Зарегистрироваться</button>
 							</div>
 						</div>
 					</form>

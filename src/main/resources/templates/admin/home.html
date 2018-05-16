@@ -3,33 +3,57 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Админ БСБ</title>
+<title>Админ БНБ</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<meta name="viewport" content="width=device-width">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body {
+	color: #FF8800;
+	background: #fdeeec !important;
+}
+
+a:link {
+	color: #FF8800;
+}
+a:hover {
+	color: #FF8800;
+}
+a:active {
+	color: #FF8800;
+}
+</style>
 </head>
 
 <body>
-	<div class="container">
-
+	<div class="header">
+		<div class="big_lg">
+			<img th:src="@{/images/f-logo.svg}">
+		</div>
+		<div class="sml_lg">
+			<img th:src="@{/images/logo_s.png}">
+		</div>
 		<form th:action="@{/logout}" method="get">
-			<button class="btn btn-md btn-danger btn-block" name="registration"
+			<button class="btn btn-md btn-block" name="registration"
 				type="Submit">Выйти</button>
 		</form>
+	</div>
+	<div class="container">
 		<div class="panel-group" style="margin-top: 20px">
 			<div class="panel-heading">
-				<span class="alert alert-info" th:utext="${userName}" role="alert"></span>
+				<div class="alert alert-info" th:utext="${userName}" role="alert"></div>
 			</div>
 		</div>
 		<div th:if="${successMessage} != null">
-			<div class="panel-group" style="margin-top: 20px">
+			<div class="panel-group">
 				<div class="panel-heading">
-					<span class="alert alert-success"
-						th:utext="${successMessage}" role="alert"></span>
+					<span class="alert alert-success" th:utext="${successMessage}"
+						role="alert"></span>
 				</div>
 			</div>
 		</div>
@@ -45,9 +69,9 @@
 		<table class="table table-striped">
 			<tr>
 				<th width="10">ID</th>
-				<th width="20">Доступ</th>
-				<th width="120">Имя</th>
-				<th width="120">Фамилия</th>
+				<th width="20" class="cl_bclock">Доступ</th>
+				<th width="120" class="cl_bclock">Имя</th>
+				<th width="120" class="cl_bclock">Фамилия</th>
 				<th width="120">Email</th>
 				<th width="60">Изменить</th>
 				<th width="60">Удалить</th>
@@ -55,16 +79,16 @@
 			<tr th:each="user : ${allUsers}">
 				<td><a th:text="${user.id}" th:href="@{'/user/' + ${user.id}}"></a></td>
 				<div th:switch="${user.active}">
-					<td th:case="1">Админ</td>
-					<td th:case="2">Пользователь</td>
+					<td th:case="1" class="cl_bclock">Админ</td>
+					<td th:case="2" class="cl_bclock">Пользователь</td>
 				</div>
-				<td th:text="${user.name}"></td>
-				<td th:text="${user.surname}"></td>
+				<td th:text="${user.name}" class="cl_bclock"></td>
+				<td th:text="${user.surname}" class="cl_bclock"></td>
 				<td th:text="${user.email}"></td>
 				<td><a th:if="${user.active} == 2"
 					th:href="@{'/admin/edit/' + ${user.id}}">Изменить</a></td>
 				<td><a th:if="${user.active} == 2"
-					th:href="@{'/admin/remove/' + ${user.id}}">Удалить</a></td>
+					href="#">Удалить</a></td>
 			</tr>
 		</table>
 	</div>

@@ -4,17 +4,120 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<link href="css/registration.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
 	crossorigin="anonymous">
 <title>Информация</title>
+<style>
+.header {
+	width: 100%;
+	height: 70px;
+	background: #ed7f2d;
+	padding: 5px 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.header img {
+	height: 100%;
+}
+
+.header form {
+	padding: 10px;
+	width: 240px;
+}
+
+.header button {
+	height: 40px;
+	border: 2px solid white;
+	background: #ed7f2d;
+	outline: none;
+	font-weight: bold;
+	color: white;
+}
+
+.header button:hover {
+	background: #d76613;
+	color: white;
+	border: 2px solid white;
+}
+
+body {
+	color: #FF8800;
+	background: #fdeeec 
+	!important;
+}
+
+.sml_lg {
+	display: none;
+}
+
+.h2_pad {
+	padding: 15px 0px;
+	text-align: center;
+}
+
+#text {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.btn_form {
+	margin: 0px auto;
+	padding-bottom: 25px;
+	width:60%;
+}
+
+.btn_form button {
+	height: 40px;
+	border: 2px solid white;
+	background: #f09a59;
+	outline: none;
+	font-weight: bold;
+	color: white;
+}
+
+.btn_form button:hover {
+	background: #cf8146;
+	color: white;
+	border: 2px solid white;
+}
+
+@media ( max-width : 800px) {
+	.h2_pad{
+	font-size:24px;
+	}
+	.big_lg {
+		display: none;
+	}
+	.sml_lg {
+		display: block;
+	}
+	.header {
+		padding: 0px 20px;
+	}
+	.header form {
+		width: 240px;
+	}
+}
+
+@media ( max-width : 520px) {
+	.container {
+		width: 100%;
+	}
+}
+</style>
 </head>
 <body>
+<div class="header"><div class="big_lg"><img  th:src="@{/images/f-logo.svg}"></div>
+	<div class="sml_lg"><img  th:src="@{/images/logo_s.png}"></div>
 	<form th:if="${user.getActive()} == 1" th:action="@{/admin/home}" method="get">
 		<button class="btn btn-md btn-warning btn-block" type="Submit">Админ</button>
 	</form>
+</div>
+
 
 	<div class="form">
 		<div class="container">
@@ -23,131 +126,131 @@
 					<form autocomplete="off" action="#" th:action="@{/user}"
 						th:object="${user}" method="post" data-toggle="validator"
 						role="form">
-						<h2>Информация о пользователе</h2>
+						<h2 class="h2_pad">Информация о пользователе</h2>
 						<div class="form-group">
-							<label for="inputEmail" class="control-label">Email</label> <span
-								th:text="*{email}" class="form-control alert-secondary text-primary" id="inputEmail"></span>
+							<label for="inputEmail" class="control-label" id="text">Email</label> <span
+								th:text="*{email}" class="form-control alert-warning" id="inputEmail"></span>
 						</div>
 
 						<div class="form-group">
-							<label for="inputSurname" class="control-label">Фамилия</label> <span
-								th:text="*{surname}" class="form-control alert-secondary text-primary" id="inputSurname"></span>
+							<label for="inputSurname" class="control-label" id="text">Фамилия</label> <span
+								th:text="*{surname}" class="form-control alert-warning" id="inputSurname"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputName" class="control-label">Имя</label> <span
-								th:text="*{name}" class="form-control alert-secondary text-primary" id="inputName"></span>
+							<label for="inputName" class="control-label" id="text">Имя</label> <span
+								th:text="*{name}" class="form-control alert-warning" id="inputName"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputPatronymiс" class="control-label">Отчество</label>
-							<span th:text="*{lastname}" class="form-control alert-secondary text-primary"
+							<label for="inputPatronymiс" class="control-label" id="text">Отчество</label>
+							<span th:text="*{lastname}" class="form-control alert-warning"
 								id="inputPatronymiс"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputdateOfBD" class="control-label">Дата
-								Рождения</label> <span th:text="*{birthday}" class="form-control alert-secondary text-primary"
+							<label for="inputdateOfBD" class="control-label" id="text">Дата
+								Рождения</label> <span th:text="*{birthday}" class="form-control alert-warning"
 								id="inputdateOfBD" type="date"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputSex" class="control-label">Пол</label> <span
-								th:text="*{gender}" class="form-control alert-secondary text-primary" id="inputSex"></span>
+							<label for="inputSex" class="control-label" id="text">Пол</label> <span
+								th:text="*{gender}" class="form-control alert-warning" id="inputSex"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputIdLetter" class="control-label">Серия
-								паспорта</label> <span th:text="*{passportseries}" class="form-control alert-secondary text-primary"
+							<label for="inputIdLetter" class="control-label" id="text">Серия
+								паспорта</label> <span th:text="*{passportseries}" class="form-control alert-warning"
 								id="inputIdLetter"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputNumber" class="control-label">Номер
-								паспорта</label> <span th:text="*{passportnumber}" class="form-control alert-secondary text-primary"
+							<label for="inputNumber" class="control-label" id="text">Номер
+								паспорта</label> <span th:text="*{passportnumber}" class="form-control alert-warning"
 								id="inputNumber"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputIssuance" class="control-label">Кем
+							<label for="inputIssuance" class="control-label" id="text">Кем
 								выдан паспорт</label> <span th:text="*{passportissue}"
-								class="form-control alert-secondary text-primary" id="inputIssuance"></span>
+								class="form-control alert-warning" id="inputIssuance"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputdateOfIssuance" class="control-label">Дата
+							<label for="inputdateOfIssuance" class="control-label" id="text">Дата
 								выдачи паспорта</label> <span th:text="*{passportdate}"
-								class="form-control alert-secondary text-primary" id="inputdateOfIssuance"></span>
+								class="form-control alert-warning" id="inputdateOfIssuance"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputIdNumber" class="control-label">Идентификационный
-								номер</label> <span th:text="*{passportid}" class="form-control alert-secondary text-primary"
+							<label for="inputIdNumber" class="control-label" id="text">Идентификационный
+								номер</label> <span th:text="*{passportid}" class="form-control alert-warning"
 								id="inputIdNumber"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputPlaceOfBorn" class="control-label">Место
-								рождения</label> <span th:text="*{birthplace}" class="form-control alert-secondary text-primary"
+							<label for="inputPlaceOfBorn" class="control-label" id="text">Место
+								рождения</label> <span th:text="*{birthplace}" class="form-control alert-warning"
 								id="inputPlaceOfBorn"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputPlaceOfLiving" class="control-label">Город
-								прописки</label> <span th:text="*{city}" class="form-control alert-secondary text-primary"
+							<label for="inputPlaceOfLiving" class="control-label" id="text">Город
+								прописки</label> <span th:text="*{city}" class="form-control alert-warning"
 								id="inputPlaceOfBorn"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputLivingEddress" class="control-label">Адрес
+							<label for="inputLivingEddress" class="control-label" id="text">Адрес
 								фактического проживания</label> <span th:text="*{adress}"
-								class="form-control alert-secondary text-primary" id="inputLivingEddress"></span>
+								class="form-control alert-warning" id="inputLivingEddress"></span>
 						</div>
 						<div class="form-group">
-							<label for="HomePhone" class="control-label">Домашний
-								телефон</label> <span th:text="*{phonehome}" class="form-control alert-secondary text-primary"
+							<label for="HomePhone" class="control-label" id="text">Домашний
+								телефон</label> <span th:text="*{phonehome}" class="form-control alert-warning"
 								id="inputHomePhone"></span>
 						</div>
 						<div class="form-group">
-							<label for="MobPhone" class="control-label">Мобильный
-								телефон</label> <span th:text="*{phonemobile}" class="form-control alert-secondary text-primary"
+							<label for="MobPhone" class="control-label" id="text">Мобильный
+								телефон</label> <span th:text="*{phonemobile}" class="form-control alert-warning"
 								id="inputMobPhone"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputJob" class="control-label">Место работы</label>
-							<span th:text="*{job}" class="form-control alert-secondary text-primary" id="inputJob"></span>
+							<label for="inputJob" class="control-label" id="text">Место работы</label>
+							<span th:text="*{job}" class="form-control alert-warning" id="inputJob"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputJobPosition" class="control-label">Должность</label>
-							<span th:text="*{jobposition}" class="form-control alert-secondary text-primary"
+							<label for="inputJobPosition" class="control-label" id="text">Должность</label>
+							<span th:text="*{jobposition}" class="form-control alert-warning"
 								id="inputJobPosition"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputCity" class="control-label">Город
-								прописки</label> <span th:text="*{residencecity}" class="form-control alert-secondary text-primary"
+							<label for="inputCity" class="control-label" id="text">Город
+								прописки</label> <span th:text="*{residencecity}" class="form-control alert-warning"
 								id="inputCity"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputEddress" class="control-label">Адрес
-								прописки</label> <span th:text="*{residenceadress}" class="form-control alert-secondary text-primary"
+							<label for="inputEddress" class="control-label" id="text">Адрес
+								прописки</label> <span th:text="*{residenceadress}" class="form-control alert-warning"
 								id="inputEddress"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputFamilyPosition">Семейное положение</label> <span
-								th:text="*{status}" class="form-control alert-secondary text-primary"
+							<label for="inputFamilyPosition" id="text">Замужем\женат</label> <span
+								th:text="*{status}" class="form-control alert-warning"
 								id="inputFamilyPosition"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputNationality">Национальность</label> <span
-								th:text="*{nationality}" class="form-control alert-secondary text-primary"
+							<label for="inputNationality" id="text">Национальность</label> <span
+								th:text="*{nationality}" class="form-control alert-warning"
 								id="inputNationality"> </span>
 						</div>
 						<div class="form-group">
-							<label for="inputDisability">Инвалидность</label> <span
-								th:text="*{disability}" class="form-control alert-secondary text-primary"
+							<label for="inputDisability" id="text">Инвалидность</label> <span
+								th:text="*{disability}" class="form-control alert-warning"
 								id="inputDisability"> </span>
 						</div>
 						<div class="form-group">
-							<label for="inputPensioner" class="control-label">Пенсионер</label>
-							<span th:text="*{pensioner}" class="form-control alert-secondary text-primary"
+							<label for="inputPensioner" class="control-label" id="text">Пенсионер</label>
+							<span th:text="*{pensioner}" class="form-control alert-warning"
 								id="inputPensioner"> </span>
 						</div>
 						<div class="form-group">
-							<label for="inputEddress" class="control-label">Ежемесячный
-								доход</label> <span th:text="*{income}" class="form-control alert-secondary text-primary"
+							<label for="inputEddress" class="control-label" id="text">Ежемесячный
+								доход</label> <span th:text="*{income}" class="form-control alert-warning"
 								id="inputEddress"></span>
 						</div>
 						<div class="form-group">
-							<label for="inputSaving" class="control-label">Военнообязанный</label>
-							<span th:text="*{military}" class="form-control alert-secondary text-primary" id="inputSaving">
+							<label for="inputSaving" class="control-label" id="text">Военнообязанный</label>
+							<span th:text="*{military}" class="form-control alert-warning" id="inputSaving">
 							</span>
 						</div>
 					</form>
@@ -166,11 +269,9 @@
 		</div>
 	</div> -->
 
-
-
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-	<script src="scripts/jquery.maskedinput.min.js"></script>
-	<script src="scripts/script.js"></script>
+	<script th:src="@{/scripts/jquery.maskedinput.min.js}"></script>
+	<script th:src="@{/scripts/script.js}"></script>
 	<!-- <script>
                 $(document).ready(function($){
                     $("#inputHomePhone").mask("999-99-99");

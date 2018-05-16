@@ -29,19 +29,48 @@
 .header button:hover {
 	background: #d76613;
 	color: white;
-}
-
-tbody {
-    background: #eee;	
+	border: 2px solid white;
 }
 
 body {
-	background-color: #ed7f2dc9 
+	color: #FF8800;
+	background: #fdeeec 
 	!important;
 }
 
 .sml_lg {
 	display: none;
+}
+
+.h2_pad {
+	padding: 15px 0px;
+	text-align: center;
+}
+
+#text {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.btn_form {
+	margin: 0px auto;
+	padding-bottom: 25px;
+	width: 60%;
+}
+
+.btn_form button {
+	height: 40px;
+	border: 2px solid white;
+	background: #f09a59;
+	outline: none;
+	font-weight: bold;
+	color: white;
+}
+
+.btn_form button:hover {
+	background: #cf8146;
+	color: white;
+	border: 2px solid white;
 }
 
 @media ( max-width : 800px) {
@@ -51,8 +80,10 @@ body {
 	.sml_lg {
 		display: block;
 	}
-	.header form{
-		padding: 14px;
+	.header {
+		padding: 0px 20px;
+	}
+	.header form {
 		width: 240px;
 	}
 }
@@ -60,8 +91,5 @@ body {
 @media ( max-width : 520px) {
 	.container {
 		width: 100%;
-	}
-	.cl_bclock {
-		display: none;
 	}
 }

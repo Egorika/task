@@ -2,125 +2,117 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Изменение</title>
-<link rel="stylesheet" type="text/css" href="/css/edit.css" />
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<link href="css/registration.css" rel="stylesheet">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-.header {
-	width: 100%;
-	height: 70px;
-	background: #ed7f2d;
-	padding: 5px 20px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+	crossorigin="anonymous">
+<title>Изменение</title>
+	<style>
+		.header {
+			width: 100%;
+			height: 70px;
+			background: #ed7f2d;
+			padding: 5px 20px;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
 
-.header img {
-	height: 100%;
-}
+		.header img {
+			height: 100%;
+		}
 
-.header form {
-	padding: 10px;
-	width: 240px;
-}
+		.header form {
+			padding: 10px;
+			width: 240px;
+		}
 
-.header button {
-	height: 40px;
-	border: 2px solid white;
-	background: #ed7f2d;
-	outline: none;
-	font-weight: bold;
-	color: white;
-}
+		.header button {
+			height: 40px;
+			border: 2px solid white;
+			background: #ed7f2d;
+			outline: none;
+			font-weight: bold;
+			color: white;
+		}
 
-.header button:hover {
-	background: #d76613;
-	color: white;
-	border: 2px solid white;
-}
+		.header button:hover {
+			background: #d76613;
+			color: white;
+			border: 2px solid white;
+		}
+		body {
+			background: #ed7f2dc9;
+		}
+		.sml_lg {
+			display: none;
+		}
 
-body {
-	color: #FF8800;
-	background: #fdeeec !important;
-}
+		.h2_pad {
+			padding: 15px 0px;
+			text-align: center;
+		}
 
-.sml_lg {
-	display: none;
-}
+		#text {
+			font-weight: bold;
+			font-size: 18px;
+		}
 
-.h2_pad {
-	padding: 15px 0px;
-	text-align: center;
-}
+		.btn_form {
+			margin: 0px auto;
+			padding-bottom: 25px;
+		}
 
-#text {
-	font-weight: bold;
-	font-size: 18px;
-}
+		.btn_form button {
+			height: 40px;
+			border: 2px solid white;
+			background: #f09a59;
+			outline: none;
+			font-weight: bold;
+			color: white;
+		}
 
-.btn_form {
-	margin: 0px auto;
-	padding-bottom: 25px;
-	width: 60%;
-}
+		.btn_form button:hover {
+			background: #cf8146;
+			color: white;
+			border: 2px solid white;
+		}
 
-.btn_form button {
-	height: 40px;
-	border: 2px solid white;
-	background: #f09a59;
-	outline: none;
-	font-weight: bold;
-	color: white;
-}
 
-.btn_form button:hover {
-	background: #cf8146;
-	color: white;
-	border: 2px solid white;
-}
+		@media (max-width: 800px) {
+			.big_lg {
+				display: none;
+			}
+			.sml_lg {
+				display: block;
+			}
+			.header {
+				padding: 0px 20px;
+			}
+			.header form {
+				padding: 14px;
+				width: 240px;
+			}
+		}
+		@media (max-width: 520px) {
+			.container {
+				width: 100%;
+			}
 
-@media ( max-width : 800px) {
-	.big_lg {
-		display: none;
-	}
-	.sml_lg {
-		display: block;
-	}
-	.header {
-		padding: 0px 20px;
-	}
-	.header form {
-		/* padding: 14px; */
-		width: 240px;
-	}
-}
+		}
 
-@media ( max-width : 520px) {
-	.container {
-		width: 100%;
-	}
-}
-</style>
+	</style>
 </head>
 <body>
-	<div class="header">
-		<div class="big_lg">
-			<img th:src="@{/images/f-logo.svg}">
-		</div>
-		<div class="sml_lg">
-			<img th:src="@{/images/logo_s.png}">
-		</div>
-		<form th:action="@{/admin/home}" method="get">
-			<button class="btn btn-md btn-warning btn-block" type="Submit">Назад</button>
-		</form>
-	</div>
+<div class="header"><div class="big_lg"><img  src="../../static/images/f-logo.svg"></div>
+	<div class="sml_lg"><img  src="../../static/images/logo_s.png"></div>
+	<form th:action="@{/admin/home}" method="get">
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Назад</button>
+	</form>
+</div>
 	<div class="form">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -130,8 +122,8 @@ body {
 						role="form">
 						<h2 class="h2_pad">Изменение пользователя</h2>
 						<div class="form-group">
-							<label for="inputEmail" class="control-label" id="text">Email</label>
-							<input type="email" th:field="*{email}" th:value="*{email}"
+							<label for="inputEmail" class="control-label" id="text">Email</label> <input
+								type="email" th:field="*{email}" th:value="*{email}"
 								class="form-control" id="inputEmail" placeholder="Ввод"
 								data-error="Bruh, that email address is invalid">
 							<div class="help-block with-errors"></div>
@@ -140,14 +132,14 @@ body {
 						<input type="hidden" th:field="*{id}" th:value="*{id}"> <input
 							type="hidden" th:field="*{active}" th:value="*{active}">
 						<div class="form-group">
-							<label for="inputSurname" class="control-label" id="text">Фамилия</label>
-							<input type="text" th:field="*{surname}" th:value="*{surname}"
+							<label for="inputSurname" class="control-label" id="text">Фамилия</label> <input
+								type="text" th:field="*{surname}" th:value="*{surname}"
 								class="form-control" id="inputSurname" placeholder="Ввод"
 								required>
 						</div>
 						<div class="form-group">
-							<label for="inputName" class="control-label" id="text">Имя</label>
-							<input type="text" th:field="*{name}" th:value="*{name}"
+							<label for="inputName" class="control-label" id="text">Имя</label> <input
+								type="text" th:field="*{name}" th:value="*{name}"
 								class="form-control" id="inputName" placeholder="Ввод" required>
 						</div>
 						<div class="form-group">
@@ -166,7 +158,7 @@ body {
 							<label for="inputSex" class="control-label" id="text">Пол</label>
 							<div class="radio">
 								<label> <input th:field="*{gender}" th:value="Мужчина"
-									type="radio" name="sex" required> Мужчина
+									type="radio" name="sex"  required> Мужчина
 								</label>
 							</div>
 							<div class="radio">
@@ -213,14 +205,14 @@ body {
 								id="inputPlaceOfBorn" placeholder="Ввод" required>
 						</div>
 						<div class="form-group">
-							<label for="inputPlaceOfLiving" id="text">Город прописки</label>
-							<select th:field="*{city}" th:value="*{city}"
-								class="form-control" id="inputPlaceOfLiving" required>
-								<option th:value="Минск">Минск</option>
+							<label for="inputPlaceOfLiving" id="text">Город прописки</label> <select
+								th:field="*{city}" th:value="*{city}" class="form-control"
+								id="inputPlaceOfLiving" required>
 								<option th:value="Брест">Брест</option>
 								<option th:value="Витебск">Витебск</option>
 								<option th:value="Гомель">Гомель</option>
 								<option th:value="Гродно">Гродно</option>
+								<option th:value="Минск">Минск</option>
 								<option th:value="Могилёв">Могилёв</option>
 							</select>
 						</div>
@@ -243,8 +235,8 @@ body {
 								id="inputMobPhone" placeholder="Ввод">
 						</div>
 						<div class="form-group">
-							<label for="inputJob" class="control-label" id="text">Место
-								работы</label> <input type="text" th:field="*{job}" th:value="*{job}"
+							<label for="inputJob" class="control-label" id="text">Место работы</label>
+							<input type="text" th:field="*{job}" th:value="*{job}"
 								class="form-control" id="inputJob" placeholder="Ввод">
 						</div>
 						<div class="form-group">
@@ -257,11 +249,11 @@ body {
 							<label for="inputCity" id="text">Город прописки</label> <select
 								th:field="*{residencecity}" th:value="*{residencecity}"
 								class="form-control" id="inputCity" required>
-								<option th:value="Минск">Минск</option>
 								<option th:value="Брест">Брест</option>
 								<option th:value="Витебск">Витебск</option>
 								<option th:value="Гомель">Гомель</option>
 								<option th:value="Гродно">Гродно</option>
+								<option th:value="Минск">Минск</option>
 								<option th:value="Могилёв">Могилёв</option>
 							</select>
 						</div>
@@ -272,9 +264,9 @@ body {
 								id="inputEddress" placeholder="Ввод" required>
 						</div>
 						<div class="form-group">
-							<label for="inputFamilyPosition" id="text">Семейное
-								положение</label> <select th:field="*{status}" th:value="*{status}"
-								class="form-control" id="inputFamilyPosition" required>
+							<label for="inputFamilyPosition" id="text">Семейное положение</label> <select
+								th:field="*{status}" th:value="*{status}" class="form-control"
+								id="inputFamilyPosition" required>
 								<option th:value="Да">Замужем/Женат</option>
 								<option th:value="Нет">Не замужен/Не женат</option>
 							</select>
@@ -330,9 +322,9 @@ body {
 								</label>
 							</div>
 						</div>
-						<div class="btn_form">
-							<button type="submit" class="btn btn-block">Изменить</button>
-						</div>
+							<div class="col-sm-9 btn_form">
+								<button type="submit" class="btn btn-block" >Изменить</button>
+							</div>
 					</form>
 				</div>
 			</div>
@@ -352,8 +344,8 @@ body {
 
 
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-	<script th:src="@{/scripts/jquery.maskedinput.min.js}"></script>
-	<script th:src="@{/scripts/script.js}"></script>
+	<script src="scripts/jquery.maskedinput.min.js"></script>
+	<script src="scripts/script.js"></script>
 	<!-- <script>
                 $(document).ready(function($){
                     $("#inputHomePhone").mask("999-99-99");
