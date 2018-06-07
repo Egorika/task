@@ -21,9 +21,11 @@ body {
 a:link {
 	color: #FF8800;
 }
+
 a:hover {
 	color: #FF8800;
 }
+
 a:active {
 	color: #FF8800;
 }
@@ -74,7 +76,6 @@ a:active {
 				<th width="120" class="cl_bclock">Фамилия</th>
 				<th width="120">Email</th>
 				<th width="60">Изменить</th>
-				<th width="60">Удалить</th>
 			</tr>
 			<tr th:each="user : ${allUsers}">
 				<td><a th:text="${user.id}" th:href="@{'/user/' + ${user.id}}"></a></td>
@@ -87,8 +88,6 @@ a:active {
 				<td th:text="${user.email}"></td>
 				<td><a th:if="${user.active} == 2"
 					th:href="@{'/admin/edit/' + ${user.id}}">Изменить</a></td>
-				<td><a th:if="${user.active} == 2"
-					href="#">Удалить</a></td>
 			</tr>
 		</table>
 	</div>

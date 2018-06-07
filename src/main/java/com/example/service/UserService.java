@@ -11,6 +11,5 @@ public interface UserService {
 	public User findUserByPassportId(String passportid);
 	public User findUserByPassportId(String passportid, Long id);
 	public void saveUser(User user);
-	public void deleteUser(User user);
 	public List<User> findAll();
 }

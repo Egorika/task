@@ -69,10 +69,4 @@ public class UserServiceImpl implements UserService{
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
-	@Override
-	@Transactional
-	public void deleteUser(User user) {
-		userRepository.delete(user);
-	}
-
 }

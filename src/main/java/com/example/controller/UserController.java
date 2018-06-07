@@ -15,13 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.example.model.Role;
 import com.example.model.User;
 import com.example.service.UserService;
 
 @Controller
-public class LoginController {
+public class UserController {
 
 	@Autowired
 	private UserService userService;
@@ -113,15 +111,6 @@ public class LoginController {
 		User user = userService.findUserById(id);
 		modelAndView.addObject("user", user);
 		modelAndView.setViewName("/admin/edit");
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/admin/remove/{id}", method = RequestMethod.GET)
-	public ModelAndView removePerson(@PathVariable Long id) {
-		ModelAndView modelAndView = new ModelAndView();
-		User user = userService.findUserById(id);
-		userService.deleteUser(user);
-		modelAndView.setViewName("redirect:/admin/home");
 		return modelAndView;
 	}
 

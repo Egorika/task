@@ -1,13 +1,10 @@
 package com.example.model;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,10 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Transient;
 
 @Entity
@@ -31,13 +24,9 @@ public class User {
 	private Long id;
 
 	@Column(name = "email")
-	@Email(message = "*Введите корректный email")
-	@NotEmpty(message = "*Введите email")
 	private String email;
 
 	@Column(name = "password")
-	@Length(min = 5, message = "*Пароль должен состоять не менее чем из 5 символов")
-	@NotEmpty(message = "*Введите пароль")
 	@Transient
 	private String password;
 
@@ -119,6 +108,7 @@ public class User {
 
 	@Column(name = "active")
 	private int active;
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			name = "user_role", 
